@@ -2,7 +2,7 @@
 
 [CryptoView](https://cryptoviiew.netlify.app/)
 
-A wesite which is used to watch prices of various crypto currencies and track them.
+A website which is used to watch prices of various crypto currencies and track them.
 
 ### Tech used
 1. React for frontend
