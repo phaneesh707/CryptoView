@@ -3,6 +3,9 @@ import { Container } from '@mui/system'
 import React from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { CryptoState } from '../../CryptoContext'
+import AuthModal from '../Authentication/AuthModal'
+import UserSidebar from '../Authentication/UserSidebar'
+
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,15 +16,15 @@ const Header = () => {
     },
   })
 
-  const {currency,setCurrency} = CryptoState();
+  const {currency,setCurrency,user} = CryptoState();
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <AppBar color='transparent' position='static'>
+      <AppBar color="transparent" position="static">
         <Container>
           <Toolbar>
             <Typography
-              variant='h6'
+              variant="h6"
               sx={{
                 flex: 1,
                 color: "gold",
@@ -39,15 +42,16 @@ const Header = () => {
                 sx={{
                   height: 40,
                   width: 100,
-                  marginRight: 15,
+                  marginRight:3
                 }}
                 value={currency}
-                onChange={(e)=>setCurrency(e.target.value)}
+                onChange={(e) => setCurrency(e.target.value)}
               >
                 <MenuItem value={"INR"}>INR</MenuItem>
                 <MenuItem value={"USD"}>USD</MenuItem>
               </Select>
             </FormControl>
+            {user?<UserSidebar />:<AuthModal />}
           </Toolbar>
         </Container>
       </AppBar>

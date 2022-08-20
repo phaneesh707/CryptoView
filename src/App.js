@@ -5,20 +5,26 @@ import CoinPage from './Pages/CoinPage/CoinPage';
 import HomePage from './Pages/HomePage/HomePage';
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { Container } from '@mui/system';
+import AlertComp from './Components/Alert/AlertComp';
+
+
 function App() {
   return (
     <BrowserRouter>
-      <div style={{
-        backgroundColor:'#14161a',
-        minHeight:'100vh',
-        width:'100%'
-      }}>
+      <div
+        style={{
+          backgroundColor: "#14161a",
+          minHeight: "100vh",
+          width: "100%",
+        }}
+      >
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/coins/:id" element={<CoinPage />} />
         </Routes>
       </div>
+      <AlertComp />
     </BrowserRouter>
   );
 }

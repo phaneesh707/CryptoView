@@ -11,11 +11,11 @@ import { numberWithCommas } from "../Banner/Carousel";
 
 
 const CoinsTable = () => {
-  const [coins, setCoins] = useState([]);
+  
   const [loading, setLoading] = useState(false);
   const [search,setSearch] = useState("");
   const [page,setPage] = useState(1);
-  const { currency,symbol } = CryptoState();
+  const { currency,symbol,coins,setCoins } = CryptoState();
   const navigate = useNavigate();
 
   const fetchCoins = async () => {

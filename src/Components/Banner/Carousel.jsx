@@ -5,6 +5,7 @@ import { CryptoState } from '../../CryptoContext'
 import { useState } from 'react'
 import AliceCarousel from "react-alice-carousel";
 import { Link } from '@mui/material'
+import { Router } from 'react-router-dom'
 
 
 export function numberWithCommas(x) {
@@ -22,7 +23,7 @@ const Carousel = () => {
         setTrending(data);
     }
 
-    console.log(trending);
+    // console.log(trending);
 
     useEffect(() => {
       fetchTrendingCoins();
@@ -44,43 +45,43 @@ const Carousel = () => {
         let profit = coin.price_change_percentage_24h>=0;
 
         return (
-          <Link
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              color: "white",
-              textTransform: "uppercase",
-              pointer: "curson",
-              textDecoration: "none",
-            }}
-            to={`/coin/${coin.id}`}
-          >
-            <img
-              src={coin?.image}
-              alt={coin.name}
-              height="80"
-              style={{ marginBottom: 10 }}
-            />
-            <span>
-              {coin?.symbol}
-              &nbsp;
-              <span
-                style={{
-                  color: profit > 0 ? "rgb(14, 203, 129)" : "red",
-                  fontWeight: 500,
-                }}
-              >
-                {profit && "+"}
-                {coin?.price_change_percentage_24h?.toFixed(2)}%
+            <Link
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                color: "white",
+                textTransform: "uppercase",
+                pointer: "cursor",
+                textDecoration: "none",
+              }}
+              to={`/coins/${coin.id}`}
+            >
+              <img
+                src={coin?.image}
+                alt={coin.name}
+                height="80"
+                style={{ marginBottom: 10 }}
+              />
+              <span>
+                {coin?.symbol}
+                &nbsp;
+                <span
+                  style={{
+                    color: profit > 0 ? "rgb(14, 203, 129)" : "red",
+                    fontWeight: 500,
+                  }}
+                >
+                  {profit && "+"}
+                  {coin?.price_change_percentage_24h?.toFixed(2)}%
+                </span>
               </span>
-            </span>
 
-            <span style={{ fontSize: 22, fontWeight: 500 }}>
-              {symbol}
-              {numberWithCommas(coin?.current_price?.toFixed(2))}
-            </span>
-          </Link>
+              <span style={{ fontSize: 22, fontWeight: 500 }}>
+                {symbol}
+                {numberWithCommas(coin?.current_price?.toFixed(2))}
+              </span>
+            </Link>
         );
     })
 
