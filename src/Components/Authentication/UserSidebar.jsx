@@ -162,7 +162,7 @@ const removeFromWatchlist = async (coin) => {
                                 gap: 8,
                               }}
                             >
-                              {Symbol}
+                              {currency==="INR"?"₹":"$"}{" "}
                               {numberWithCommas(coin.current_price.toFixed(2))}
                               <AiFillDelete
                                 style={{ cursor: "pointer" }}

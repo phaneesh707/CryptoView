@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { LinearProgress, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from "@mui/material";
 import {useNavigate} from "react-router-dom"
 import { numberWithCommas } from "../Banner/Carousel";
+import { updateCurrentUser } from "firebase/auth";
 
 
 const CoinsTable = () => {
@@ -22,7 +23,6 @@ const CoinsTable = () => {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
     setCoins(data);
-    console.log(data);
     setLoading(false);
   };
 
@@ -42,6 +42,7 @@ const CoinsTable = () => {
       return coin.name.toLowerCase().includes(search) || coin.symbol.toLowerCase().includes(search)
     })
   }
+  
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -151,7 +152,7 @@ const CoinsTable = () => {
                             color: "white",
                           }}
                         >
-                          {symbol}{" "}
+                          {currency==="INR"?"₹":"$"}{" "}
                           {numberWithCommas(row.current_price.toFixed(2))}
                         </TableCell>
 
@@ -171,7 +172,7 @@ const CoinsTable = () => {
                             color: "white",
                           }}
                         >
-                          {symbol}{" "}
+                          {currency==="INR"?"₹":"$"}{" "}
                           {numberWithCommas(
                             row.market_cap.toString().slice(0, -6)
                           )}
