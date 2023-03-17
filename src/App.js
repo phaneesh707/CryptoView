@@ -14,6 +14,7 @@ function App() {
       <div
         style={{
           backgroundColor: "#14161a",
+          color:"white",
           minHeight: "100vh",
           width: "100%",
         }}

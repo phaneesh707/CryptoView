@@ -43,6 +43,7 @@ const handleSubmit =async () => {
           display: "flex",
           flexDirection: "column",
           gap: "20px",
+          margin:5
         }}
       >
         <TextField
@@ -50,6 +51,7 @@ const handleSubmit =async () => {
           label="Enter Email"
           type="email"
           value={email}
+          
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField

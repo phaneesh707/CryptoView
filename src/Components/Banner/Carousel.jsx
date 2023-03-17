@@ -4,8 +4,8 @@ import axios from "axios"
 import { CryptoState } from '../../CryptoContext'
 import { useState } from 'react'
 import AliceCarousel from "react-alice-carousel";
-import { Link } from '@mui/material'
-import { Router } from 'react-router-dom'
+import { Box } from '@mui/material'
+import { Router,useNavigate,Link } from 'react-router-dom'
 
 
 export function numberWithCommas(x) {
@@ -17,7 +17,7 @@ const Carousel = () => {
 
     const [trending,setTrending] = useState([])
     const { currency,symbol } = CryptoState();
-
+    const navigate = useNavigate();
     const fetchTrendingCoins = async ()=>{
         const {data} = await axios.get(TrendingCoins(currency));
         setTrending(data);
@@ -37,6 +37,7 @@ const Carousel = () => {
             items:4
         }
     }
+    
 
     
 
@@ -55,7 +56,12 @@ const Carousel = () => {
                 pointer: "cursor",
                 textDecoration: "none",
               }}
+              // onClick={()=>{
+              //   console.log("hee")
+              //   navigate('/coins/${coin.id}')
+              // }}
               to={`/coins/${coin.id}`}
+              
             >
               <img
                 src={coin?.image}

@@ -40,6 +40,7 @@ const Signup = () => {
         display: "flex",
         flexDirection: "column",
         gap: "20px",
+        margin:5
       }}
     >
       <TextField

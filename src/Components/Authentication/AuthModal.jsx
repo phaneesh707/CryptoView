@@ -14,18 +14,19 @@ import GoogleButton from  "react-google-button"
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
 import { CryptoState } from "../../CryptoContext";
+import { Container } from "@mui/material";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  backgroundColor: "transparent",
+  width: 420,
+  backgroundColor: "#292929",
   border: "2px solid #000",
   borderRadius: 2,
   boxShadow: 24,
-  
+   
 };
 
     
@@ -73,6 +74,8 @@ export default function AuthModal() {
 
   return (
     <div>
+     
+        
       <Button
         sx={{ width: 90, height: 40, backgroundColor: "#EEBC1D" }}
         onClick={handleOpen}
@@ -80,12 +83,11 @@ export default function AuthModal() {
       >
         Login
       </Button>
+
+
       <Modal
         open={open}
         onClose={handleClose}
-        sx={{
-          backgroundColor: "grey",
-        }}
       >
         <Box>
           <Box sx={style}>
@@ -125,6 +127,7 @@ export default function AuthModal() {
           </Box>
         </Box>
       </Modal>
+      
     </div>
   );
 }
